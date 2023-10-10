@@ -1,0 +1,16 @@
+#include<bits/stdc++.h>
+using namespace std;
+using LL=long long;
+int main(){
+	char ch;
+	cin>>ch;
+	if(ch%2==1){
+		//ÆæÊý
+		cout<<"YES\n"; 
+	}else{
+		//Å¼Êý
+		cout<<"NO\n"; 
+	}
+	return 0;
+}
+
