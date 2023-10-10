@@ -26,12 +26,13 @@ int main(int argc, char *argv[]) {
     //cout<<T<<"\n";
     while (T--) {
 	    //Éú³Én,x,y
-	    LL n = random(100,100);
-	    cout<<n<<"\n";
+	    LL n = random(1e3,1e3);
+	    LL m = random(1e3,1e3);
+	    cout<<n<<" "<<m<<"\n";
 	    
 	    for (LL i=1; i<=n; i++) {
-	    	for(LL j=1;j<=n;j++){
-		    	LL a = random(-20,30);
+	    	for(LL j=1;j<=m;j++){
+		    	LL a = random(1e3,1e3);
 				cout<<a<<" ";
 			}
 			cout<<"\n";

@@ -38,13 +38,13 @@ void solve() {
 }
 
 int main() {
-#if 0
+#if 1
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	cout.tie(0);
 #endif
-	//freopen("1.in", "r", stdin);
-	//freopen("1.out", "w", stdout);
+	//freopen("09.in", "r", stdin);
+	//freopen("09.out", "w", stdout);
 	LL T=1;
 	//cin>>T;
 	for (LL i=1; i<=T; i++) {
