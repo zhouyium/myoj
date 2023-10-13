@@ -19,6 +19,14 @@ LL ran(LL l=1,LL r=1e3) {
 }
 
 int main(int argc, char *argv[]) {
+	LL sum=0;
+	LL cnt=1;
+	do {
+		sum+=cnt*cnt;
+		cout<<"cnt="<<cnt<<",sum="<<sum<<"\n";
+		cnt++;
+	}while (sum<10000);
+
 	int seed = time(NULL);
 	if (argc>1) {
 		//有参数
@@ -26,7 +34,7 @@ int main(int argc, char *argv[]) {
 	}
 	srand(seed);
 	
-	freopen("02.in", "w", stdout);
+	freopen("11.in", "w", stdout);
 	
 	LL T = 1;
 	//cout<<T<<"\n";
