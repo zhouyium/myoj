@@ -51,7 +51,7 @@ void solve() {
 }
 
 int main() {
-#if 0
+#if 1
 	//提交到OJ
 	ios::sync_with_stdio(0);
 	cin.tie(0);
