@@ -1,5 +1,5 @@
-//1209: 密码翻译
-//http://47.110.135.197/problem.php?id=1209
+//1029: 密码翻译
+//http://47.110.135.197/problem.php?id=1029
 
 #include <bits/stdc++.h>
 using namespace std;
