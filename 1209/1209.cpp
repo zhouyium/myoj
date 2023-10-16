@@ -1,5 +1,5 @@
-//1206: §1 5 整理药名
-//http://47.110.135.197/problem.php?id=1206
+//1209: 密码翻译
+//http://47.110.135.197/problem.php?id=1209
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -12,18 +12,19 @@ const LL MO=1e9+7;
 const int N=5e5+10;
 
 void solve() {
-	LL n;
-	cin>>n;
-	for(LL i=1;i<=n;i++){
-		string s;
-		cin>>s;
-		LL m=s.size();
-		s[0]=toupper(s[0]);//第一个字符变大写
-		for(LL j=1;j<m;j++){
-			s[j]=tolower(s[j]);
+	string s;
+	getline(cin, s);
+	
+	for(auto &c : s){
+		if((c>='A'&&c<'Z') || (c>='a'&&c<'z')){
+			c++;
+		}else if('z'==c){
+			c='Z';
+		}else if('Z'==c){
+			c='z';
 		}
-		cout<<s<<"\n";
 	}
+	cout<<s<<"\n";
 }
 
 int main() {
