@@ -1,4 +1,4 @@
-//1209: 密码翻译
+//1209: 最长单词
 //http://47.110.135.197/problem.php?id=1209
 
 #include<bits/stdc++.h>
@@ -12,19 +12,36 @@ const LL MO=1e9+7;
 const int N=5e5+10;
 
 void solve() {
-	string s;
-	getline(cin, s);
+	string str;
+	getline(cin, str);
 	
-	for(auto &c : s){
-		if((c>='A'&&c<'Z') || (c>='a'&&c<'z')){
-			c++;
-		}else if('z'==c){
-			c='Z';
-		}else if('Z'==c){
-			c='z';
+	//分析s
+	LL n=0;
+	LL maxx=0;
+	string ans;
+	string s;//当前分析的字符串
+	for(const auto &c : str){
+		if (c=='.'){
+			//.表示结束
+			if(n>maxx){
+				maxx=n;
+				ans=s;
+			}
+			break;
+		}
+		if(c==' '){
+			if(n>maxx){
+				maxx=n;
+				ans=s;
+			}
+			n=0;
+			s.clear();
+		}else{
+			s=s+c;
+			n++;
 		}
 	}
-	cout<<s<<"\n";
+	cout<<ans<<"\n";
 }
 
 int main() {

@@ -1,4 +1,4 @@
-//1029: 密码翻译
+//1029: 最长单词
 //http://47.110.135.197/problem.php?id=1029
 
 #include <bits/stdc++.h>
@@ -8,7 +8,7 @@ typedef pair<LL,LL> PLL;
 
 const int N=2e6+10;
 
-string s="0123456789 -$!_-abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+string s="0123456789. -$!_-abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 LL ran(LL l=1,LL r=1e3) {
 	if (l>r) {
@@ -36,14 +36,13 @@ int main(int argc, char *argv[]) {
 		//cout<<n<<"\n";
 		for(LL i=1;i<=n;i++){
 			//药名长度
-			LL m = ran(80,80);
+			LL m = ran(499,499);
 			for(LL j=1;j<=m;j++){
 				LL x = ran(0, s.size()-1);
 				cout<<s[x];
 			}
-			cout<<"\n";
+			cout<<".\n";
 		}
-		cout<<"\n";
 	}
 	
 	return 0;
