@@ -1,5 +1,5 @@
-//8962: 连续字符
-//http://47.110.135.197/problem.php?id=8962
+//8963: 寻找座位
+//http://47.110.135.197/problem.php?id=8963
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -12,26 +12,47 @@ const LL MO=1e9+7;
 const int N=5e5+10;
 
 void solve() {
-	LL n;
-	cin>>n;
-	string s;
-	cin>>s;
-	s=" "+s+" ";
-	n++;
+	LL n,m;
+	cin>>n>>m;
 	
-	LL maxx=1;//答案
-	LL ans=1;//当前答案
-	for(LL i=2;i<=n;i++){
-		if(s[i]==s[i-1]+1){
-			//连续
-			ans++;
-		}else{
-			//不满足，更新答案
-			maxx=max(maxx, ans);
-			ans=1;//重置答案
+	LL used=0;//已经占用位置
+	LL aval=0;//可用位置
+	for(LL i=1;i<=n;i++){
+		for(LL j=1;j<=5;j++){
+			char t;
+			cin>>t;
+			if(t=='1'){
+				used++;
+			}else if(t=='0'){
+				aval++;
+			}
 		}
 	}
-	cout<<maxx<<"\n";
+	//cout<<used<<"\n"<<aval<<"\n";
+	
+	//m次操作
+	for(LL i=1;i<=m;i++){
+		char op;
+		LL val;
+		cin>>op>>val;
+		if(op=='D'){
+			if(aval>=val){
+				cout<<"Yes\n";
+				used+=val;
+				aval-=val;
+			}else{
+				cout<<"No\n";
+			}
+		}else if(op=='T'){
+			if(used>=val){
+				cout<<"Yes\n";
+				used-=val;
+				aval+=val;				
+			}else{
+				cout<<"No\n";
+			}
+		}
+	}
 }
 
 int main() {
@@ -48,7 +69,7 @@ int main() {
 		solve();
 	}
 #else
-	int n=10;
+	int n=11;
 	for(int i=0;i<n;i++){
 		char in[16];
 		sprintf(in, "%02d.in", i);
