@@ -1,30 +1,30 @@
+//4409: 盒子包裹问题
+//http://47.110.135.197/problem.php?id=4409
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 using LL=long long;
-using PLL=pair<LL,LL>;
-const LL INF=0x3f3f3f3f3f3f3f3f;
-const double EPS=1e-10;
-const LL MO=1e9+7;
-
-const int N=1e3+10;
-LL a[N];
 
 void solve() {
-	LL n,m;
-	cin>>n>>m;
-	for(LL i=1;i<=n;i++){
-		cin>>a[i];
+	int n;
+	cin >> n;
+	vector<int> numbers;
+	for(int i = 0; i < n; i++) {
+		int temp;
+		cin >> temp;
+		numbers.push_back(temp);
 	}
 	
-	for(LL i=1;i<=n;i++){
-		for(LL j=i+1;j<=n;j++){
-			if(a[i]+a[j]==m){
-				cout<<i<<" "<<j<<"\n";
-				cerr<<a[i]<<"+"<<a[j]<<"="<<m<<"\n\n";
-			}
-		}
+	unordered_map<int,int> counter;
+	for(int i = 0; i < n; i++){
+		counter[numbers[i]]++;
 	}
+	
+	int result = 0;
+	for(int i = 0; i < n; i++) {
+		result = max(result, counter[numbers[i]]);
+	}
+	cout << result << "\n";	
 }
 
 int main() {
@@ -34,14 +34,14 @@ int main() {
 	cin.tie(0);
 	cout.tie(0);
 	
-	LL T=1;
+	int T=1;
 	//cin>>T;
 	while(T--) {
 		//cout<<i<<"\n";
 		solve();
 	}
 #else
-	int n=10;
+	LL n=12;
 	for(int i=0;i<n;i++){
 		char in[16];
 		sprintf(in, "%02d.in", i);
@@ -61,7 +61,7 @@ int main() {
 		fclose(stdin);
 		fclose(stdout);
 	}
-#endif
+#endif		
 	
 	return 0;
 }

@@ -1,3 +1,5 @@
+//6578: ALDS1_2_A : 冒泡排序
+//http://47.110.135.197/problem.php?id=6578
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -7,24 +9,36 @@ const LL INF=0x3f3f3f3f3f3f3f3f;
 const double EPS=1e-10;
 const LL MO=1e9+7;
 
-const int N=1e3+10;
+const int N=5e5+10;
 LL a[N];
+LL n;
+LL cnt;
 
-void solve() {
-	LL n,m;
-	cin>>n>>m;
-	for(LL i=1;i<=n;i++){
-		cin>>a[i];
-	}
-	
-	for(LL i=1;i<=n;i++){
-		for(LL j=i+1;j<=n;j++){
-			if(a[i]+a[j]==m){
-				cout<<i<<" "<<j<<"\n";
-				cerr<<a[i]<<"+"<<a[j]<<"="<<m<<"\n\n";
+void bubble_sort() {
+	for (LL i=1; i<n; i++) {//i表示执行了几轮 
+		for (LL j=1; j<n; j++) {//j表示次数 
+			if (a[j]>a[j+1]) {
+				//逆序就交换
+				swap(a[j],a[j+1]);
+				cnt++;
 			}
 		}
 	}
+}
+
+void solve() {
+	cnt=0;
+	cin>>n;
+	for(LL i=1; i<=n; i++){
+		cin>>a[i];
+	}	
+	
+	bubble_sort();
+	
+	for(LL i=1;i<=n;i++){
+		cout<<a[i]<<" ";
+	}
+	cout<<"\n"<<cnt<<"\n";	
 }
 
 int main() {

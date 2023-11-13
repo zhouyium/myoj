@@ -1,3 +1,5 @@
+//6581: ALDS1_5_B : 归并排序
+//http://47.110.135.197/problem.php?id=6581
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -7,28 +9,65 @@ const LL INF=0x3f3f3f3f3f3f3f3f;
 const double EPS=1e-10;
 const LL MO=1e9+7;
 
-const int N=1e3+10;
+const int N=5e5+10;
+LL ans=0;
 LL a[N];
+LL backup[N];
 
-void solve() {
-	LL n,m;
-	cin>>n>>m;
-	for(LL i=1;i<=n;i++){
-		cin>>a[i];
+void merge_sort(LL l,LL r){
+	if(l>=r){
+		return;
+	}
+	LL mid=(l+r)/2;
+	merge_sort(l,mid);
+	merge_sort(mid+1,r);
+	
+	LL i=l;
+	LL j=mid+1;
+	LL k=l;
+	while(i<=mid && j<=r){
+		if(a[i]>a[j]){
+			backup[k++]=a[j++];
+		}else{
+			backup[k++]=a[i++];
+		}
+		ans++;
 	}
 	
-	for(LL i=1;i<=n;i++){
-		for(LL j=i+1;j<=n;j++){
-			if(a[i]+a[j]==m){
-				cout<<i<<" "<<j<<"\n";
-				cerr<<a[i]<<"+"<<a[j]<<"="<<m<<"\n\n";
-			}
-		}
+	while(i<=mid){
+		backup[k++]=a[i++];
+		ans++;
+	}
+	
+	while(j<=r){
+		backup[k++]=a[j++];
+		ans++;
+	}
+	
+	k=l;
+	for(LL m=l;m<=r;m++){
+		a[m]=backup[k++];
 	}
 }
 
+void solve() {
+	ans=0;
+	LL n;
+	cin>>n;
+	for(LL i=1; i<=n; i++){
+		cin>>a[i];
+	}	
+	
+	merge_sort(1,n);
+	
+	for(LL i=1;i<=n;i++){
+		cout<<backup[i]<<" ";
+	}
+	cout<<"\n"<<ans<<"\n";	
+}
+
 int main() {
-#if 1
+#if 0
 	//提交到OJ
 	ios::sync_with_stdio(0);
 	cin.tie(0);
@@ -42,7 +81,7 @@ int main() {
 	}
 #else
 	int n=10;
-	for(int i=0;i<n;i++){
+	for(int i=6;i<n;i++){
 		char in[16];
 		sprintf(in, "%02d.in", i);
 		char out[16];

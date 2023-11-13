@@ -1,3 +1,5 @@
+//8478: ALDS1_6_A : Counting Sort
+//http://47.110.135.197/problem.php?id=8478
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -7,24 +9,24 @@ const LL INF=0x3f3f3f3f3f3f3f3f;
 const double EPS=1e-10;
 const LL MO=1e9+7;
 
-const int N=1e3+10;
+const int N=1e4+10;
 LL a[N];
 
 void solve() {
-	LL n,m;
-	cin>>n>>m;
+	LL n;
+	cin>>n;
 	for(LL i=1;i<=n;i++){
-		cin>>a[i];
+		LL x;
+		cin>>x;
+		a[x]++;
 	}
-	
-	for(LL i=1;i<=n;i++){
-		for(LL j=i+1;j<=n;j++){
-			if(a[i]+a[j]==m){
-				cout<<i<<" "<<j<<"\n";
-				cerr<<a[i]<<"+"<<a[j]<<"="<<m<<"\n\n";
-			}
+	for(LL i=0;i<=1e4;i++){
+		while(a[i]>0){
+			cout<<i<<" ";
+			a[i]--;
 		}
 	}
+	cout<<"\n";
 }
 
 int main() {
