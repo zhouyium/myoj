@@ -35,6 +35,20 @@ LL qpow(LL a,LL b,LL p){
 	return res;
 }
 
+LL exgcd(LL a,LL b,LL &x,LL &y){
+	if(b==0){
+		x=1;
+		y=0;
+		return a;
+	}
+	LL r=exgcd(b,a%b,x,y);
+	LL t=x;
+	x=y;
+	y=t-a/b*y;
+	return r;
+} 
+
+
 LL inv(LL b,LL p){
 	return b==1?1:(p-p/b)*inv(p%b,p)%p;
 }
@@ -42,12 +56,25 @@ LL inv(LL b,LL p){
 void solve() {
 	LL p,q,K;
 	cin>>p>>q>>K;
+	LL ans;
+#if 0
+	LL x,y;
+	LL temp=qpow(p,K,MO);
+	exgcd(temp,MO,x,y);
+	ans=(qpow(p-2*q,K,MO)*x)%MO;
+	ans=1+ans;
+	exgcd(2,MO,x,y);
+	ans=(ans*x)%MO;
+	ans=(ans+MO)%MO;
+#else	
 	LL zi=qpow(p,K,MO)+qpow(p-2*q,K,MO);//分子
 	zi=zi%MO*inv(2,MO)%MO;
 	LL mu=qpow(p,K,MO);//分母
 	
-	LL res=zi*inv(mu,MO)%MO;
-	cout<<res<<"\n";
+	ans=zi*inv(mu,MO)%MO;
+	ans=(ans+MO)%MO;
+#endif	
+	cout<<ans<<"\n";
 }
 
 int main() {
@@ -64,7 +91,7 @@ int main() {
 		solve();
 	}
 #else
-	int n=20;
+	int n=5;
 	for(int i=0;i<n;i++){
 		char in[16];
 		sprintf(in, "%02d.in", i);
@@ -75,7 +102,7 @@ int main() {
 		freopen(out, "w", stdout);
 		
 		LL T=1;
-		//cin>>T;
+		cin>>T;
 		while(T--) {
 			//cout<<i<<"\n";
 			solve();
