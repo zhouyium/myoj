@@ -57,12 +57,6 @@ void solve() {
 }
 
 int main() {
-#if 1
-	//提交到OJ
-	ios::sync_with_stdio(0);
-	cin.tie(0);
-	cout.tie(0);
-	
 	C[0][0]=1;//特殊
 	for(LL i=1;i<=100;i++){
 		for(LL j=0;j<=i;j++){
@@ -79,6 +73,12 @@ int main() {
 	for(LL i=1;i<=100;i++){
 		two[i]=two[i-1]*0.5;
 	}
+
+#if 1
+	//提交到OJ
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
 	
 	int T=1;
 	cin>>T;
@@ -87,7 +87,7 @@ int main() {
 		solve();
 	}
 #else
-	int n=20;
+	int n=10;
 	for(int i=0;i<n;i++){
 		char in[16];
 		sprintf(in, "%02d.in", i);
@@ -98,7 +98,7 @@ int main() {
 		freopen(out, "w", stdout);
 		
 		LL T=1;
-		//cin>>T;
+		cin>>T;
 		while(T--) {
 			//cout<<i<<"\n";
 			solve();
